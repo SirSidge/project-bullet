@@ -2,8 +2,6 @@ import pygame
 
 from constants import *
 from game_state import Game_State
-#from scenes.buttons import Button
-from scenes.main_menu import Main_Menu
 
 pygame.init()
 
@@ -17,10 +15,12 @@ game_state = Game_State(logic_surface)
 pygame.display.set_caption("Project Bullet")
 
 while game_state.running:
+    game_state.dt = game_state.clock.tick(60) / 1000
+    game_state.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_state.running = False
-        game_state.handle_events()
+        game_state.handle_events(event)
 
     game_state.render()
 

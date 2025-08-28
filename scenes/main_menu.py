@@ -15,7 +15,7 @@ class Main_Menu():
         for button in self.buttons:
             game_state.screen.blit(button.button_sheet, button.dest, button.off_rect if button.hover else button.on_rect)
 
-    def handle_events(self, game_state):
+    def handle_events(self, game_state, event):
         for button in self.buttons:
             if button.collision():
                 button.hover = True
